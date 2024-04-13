@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Found - LocaPulse</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
+<style>
+    body {
+        font-family: 'Roboto Condensed', sans-serif;
+        background: linear-gradient(to bottom right, #ffffff, #aaffaa); /* White-green gradient background */
+        margin: 0;
+        padding: 0;
+    }
+
+    .container {
+        max-width: 1200px;
+        width: 80%;
+        margin: 100px auto;
+        padding: 40px;
+        background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+        border-radius: 20px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        text-align: center;
+        animation: slideIn 1s ease forwards;
+    }
+
+    @keyframes slideIn {
+        0% {
+            transform: translateY(-100%);
+        }
+        100% {
+            transform: translateY(0);
+        }
+    }
+
+    h1 {
+        font-size: 72px;
+        margin-bottom: 40px;
+        color: #28a745; /* Green color for website name */
+    }
+
+    form {
+        text-align: left;
+    }
+
+    label {
+        font-size: 28px;
+        color: #333;
+    }
+
+    input[type="text"],
+    textarea,
+    input[type="date"] {
+        width: 100%;
+        padding: 12px;
+        margin: 8px 0;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        font-size: 20px;
+    }
+
+    input[type="file"] {
+        width: 100%;
+        padding: 12px;
+        margin: 8px 0;
+        box-sizing: border-box;
+        font-size: 20px;
+    }
+
+    input[type="submit"] {
+        background-color: #28a745; /* Green color for buttons */
+        color: #fff;
+        padding: 20px 40px;
+        font-size: 28px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        display: block; /* Make the button a block element */
+        margin: 0 auto; /* Center the button horizontally */
+    }
+
+    input[type="submit"]:hover {
+        background-color: #218838; /* Darker green color on hover */
+    }
+
+    input[type="submit"]:active {
+        animation: btnClick 0.1s;
+    }
+
+    @keyframes btnClick {
+        0% {
+            transform: scale(1);
+        }
+        100% {
+            transform: scale(0.9);
+        }
+    }
+
+    .error-message {
+        color: red;
+        font-size: 20px;
+        margin-top: 10px;
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Found</h1>
+    <form id="foundForm">
+        <label for="image">Image:</label><br>
+        <input type="file" id="image" name="image" accept="image/*" required><br>
+        <label for="description">Description:</label><br>
+        <textarea id="description" name="description" rows="4" cols="50" placeholder="Enter description"></textarea><br>
+        <label for="date">Date:</label><br>
+        <input type="date" id="date" name="date" required><br>
+        <label for="location">Location:</label><br>
+        <input type="text" id="location" name="location" placeholder="Enter location" required><br><br>
+        <input type="submit" value="Submit">
+        <div id="error-message" class="error-message" style="display: none;">Please upload an image.</div>
+    </form>
+</div>
+
+<script>
+    document.getElementById("foundForm").addEventListener("submit", function(event) {
+        event.preventDefault(); // Prevent default form submission
+        validateForm(); // Call the validation function
+    });
+
+    function validateForm() {
+        var image = document.getElementById("image");
+        var errorMessage = document.getElementById("error-message");
+
+        if (image.files.length === 0) {
+            errorMessage.style.display = "block";
+        } else {
+            errorMessage.style.display = "none";
+            console.log("Form validation successful. Redirecting...");
+            window.location.href = "finish2.html"; // Redirect to the next page
+        }
+        
+    }
+</script>
+
+</body>
+</html>
